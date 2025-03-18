@@ -1,0 +1,44 @@
+.overall{
+    display:flex;
+    justify-content:space-between;
+    padding: 1rem;
+    border-bottom: grey;
+    border-bottom-style: solid;
+    
+    
+}
+
+.firsthalf{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-weight: bolder;
+}
+
+.desc{
+    font-style: italic;
+}
+
+.price{
+    color: #d38a03;
+    font-weight: bold;
+}
+
+.amount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.amount input{
+    width: 2rem;
+}
+
+.button{
+    margin: 0.2rem; 
+    height: 0.5rem;
+    display: flex;
+    align-items: center;
+}
