@@ -1,0 +1,20 @@
+.cart {
+    display: flex;
+    justify-content: center;
+    background-color: #774e02;;
+    margin: 0.5rem 7rem 0.5rem 0rem;
+    border-radius: 1rem;
+    padding: 0.5rem
+}
+.icon{
+    margin-left: 1rem;
+}
+.title{
+    margin: 0rem 0.5rem;
+}
+.amount{
+    margin-right: 1rem;
+    background-color: #d38a03;
+    border-radius: 1rem;
+    padding: 0rem 1rem;
+}
