@@ -25,7 +25,10 @@ function App() {
       
       if (existingItemIndex !== -1) {
         const updatedItems = [...prevItems];
-        updatedItems[existingItemIndex].amount += item.amount; // ✅ Increase quantity
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          amount: updatedItems[existingItemIndex].amount + item.amount,
+        }; // ✅ Increase quantity
         return updatedItems;
       } else {
         return [...prevItems, item]; // ✅ Add new item
