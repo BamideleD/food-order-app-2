@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './App.module.css'
 import FoodItems from './Components/FoodItems';
 import Navigation from './Components/Navigation/Navigation';
@@ -11,12 +11,36 @@ function App() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [foodData, setFoodData] = useState([]);
 
-  const FoodData = [
-  {title: "Chin Chin", desc: "Refreshing Snack", price: 16.50},
-  {title: "Jollof Rice", desc: "Nigerian National Dish",price: 35.50},
-  {title: "Pounded Yam", desc: "Nigerian Delicacy", price: 30.50},
-  {title: "Suya", desc: "Late Night Snack", price: 50.50},]
+  useEffect(() => {
+    fetch('https://mummy-sakas-food-app-default-rtdb.firebaseio.com/Meals.json')
+       .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const loadedMeals = [];
+        for (const key in data) {
+          loadedMeals.push({
+            id: key,
+            title: data[key].Title,
+            desc: data[key].Desc,
+            price: data[key].Price,
+          });
+        }
+        setFoodData(loadedMeals);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch food data:', error);
+      });
+
+
+  }, [])
+
+ 
 
 
   const addItem = (item) => {
@@ -53,7 +77,7 @@ function App() {
         <Navigation />
         <ShopDesc />
         <Card className={styles.fooditems}>
-          {FoodData.map((item) => (
+          {foodData.map((item) => (
             <FoodItems title={item.title} desc={item.desc} price={item.price} key={item.title} />
           ))}
         </Card>
