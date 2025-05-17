@@ -62,6 +62,13 @@ function App() {
     setTotalPrice((prevTotal) => prevTotal + item.price * item.amount);
     setTotalAmount((prevAmount) => prevAmount + item.amount); // ✅ Update total items count
   };
+
+  const clearCart = () => {
+  setItems([]);
+  setTotalAmount(0);
+  setTotalPrice(0);
+  };
+
   
   
   return (
@@ -71,6 +78,7 @@ function App() {
         totalPrice,
         items,
         addItem,
+        clearCart,
       }}
     >
       <div className={styles.app}>
